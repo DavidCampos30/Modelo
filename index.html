@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto David - Corazones Interactivos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Nombre principal -->
+  <h1 class="name-title" id="interactiveName">Universitario</h1>
+
+  <!-- Contenedor para los corazones que flotarán -->
+  <div id="heartContainer"></div>
+
+ <script>
+  // Función para crear un corazón en una posición específica
+  function createHeart(x, y) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '♥';
+    
+    // Posición donde aparecerá el corazón
+    heart.style.left = `${x}px`;
+    heart.style.top = `${y}px`;
+
+    document.body.appendChild(heart);
+
+    // Eliminar el corazón del DOM después de que termine la animación (2 segundos)
+    setTimeout(() => {
+      heart.remove();
+    }, 2000);
+  }
+
+  // Generar un corazón en una posición completamente aleatoria de la pantalla
+  function createRandomHeart() {
+    const randomX = Math.random() * window.innerWidth;
+    const randomY = Math.random() * window.innerHeight;
+    createHeart(randomX, randomY);
+  }
+
+  // --- GENERACIÓN AUTOMÁTICA ---
+  // Crea un corazón automáticamente cada 300 milisegundos (puedes ajustar este tiempo)
+  setInterval(createRandomHeart, 300);
+
+
+  // --- OPCIONAL: Mantenemos los eventos de interacción si también quieres usarlos ---
+  
+  // Evento al hacer clic
+  window.addEventListener('click', (e) => {
+    createHeart(e.clientX, e.clientY);
+  });
+
+  // Evento al pasar el cursor sobre "Universitario"
+  /*const nameElement = document.getElementById('interactiveName');
+  nameElement.addEventListener('mousemove', (e) => {
+    createHeart(e.clientX, e.clientY);
+  });*/
+</script>
+</body>
+</html>

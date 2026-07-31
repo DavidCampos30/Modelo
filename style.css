@@ -1,0 +1,118 @@
+/* Configuración básica de la página */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a, #1e1b4b);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Estilo del nombre David */
+.name-title {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(236, 72, 153, 0.6),
+               0 0 40px rgba(236, 72, 153, 0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 10;
+  /* Aplicamos la animación de latido constante */
+  animation: heartbeat 1.4s infinite ease-in-out;
+}
+
+/* Efecto al pasar el mouse sobre el nombre */
+/*.name-title:hover {
+  /*transform: scale(1.1);
+  color: #f472b6;*/
+  /* Mantenemos el latido y aumentamos la escala base al hacer hover 
+  animation: heartbeatHover 1.4s infinite ease-in-out;
+
+}*/
+/* Animación del latido en estado normal (doble pulso como un corazón) */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.15);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animación del latido cuando pasas el cursor por encima */
+@keyframes heartbeatHover {
+  0% {
+    transform: scale(1.1);
+  }
+  14% {
+    transform: scale(1.25);
+  }
+  28% {
+    transform: scale(1.1);
+  }
+  42% {
+    transform: scale(1.25);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+/* Estilo y animación de los corazones flotantes */
+.heart {
+  position: absolute;
+  color: #fffdd0; /* Tono Crema/Marfil */
+  /* Puedes probar otros tonos crema ajustando el color de arriba:
+      #fdf5e6 (OldLace)
+      #f5f5dc (Beige)
+      #faf0e6 (Linen)
+  */
+  
+  /* --- ESTA ES LA LÍNEA MODIFICADA --- */
+  font-size: 100px; /* Aumentado de 80px a 100px */
+  /* ---------------------------------- */
+
+  text-shadow: 0 0 10px rgba(255, 253, 208, 0.6);
+  pointer-events: none;
+  animation: floatUp 2s linear forwards;
+  z-index: 50px;
+}
+/* Animación: El corazón sube, se agranda y se desvanece */
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -100px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -200px) scale(1.5);
+  }
+}
