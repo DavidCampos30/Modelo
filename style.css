@@ -10,109 +10,112 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #0f172a, #1e1b4b);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Fondo oscuro profundo */
+  background: linear-gradient(135deg, #050810, #111025);
+  /* Nueva fuente elegante */
+  font-family: 'Poiret One', cursive;
   overflow: hidden;
   user-select: none;
 }
 
-/* Estilo del nombre David */
+/* Contenedor para aplicar perspectiva 3D */
+.title-container {
+  perspective: 1000px;
+  z-index: 10;
+}
+
+/* Estilo del nombre "Universitario" con efecto 3D Rojo */
 .name-title {
-  font-size: 5rem;
-  font-weight: 800;
-  color: #ffffff;
-  text-shadow: 0 0 20px rgba(236, 72, 153, 0.6),
-               0 0 40px rgba(236, 72, 153, 0.4);
+  font-size: 7rem; /* Aumentado para mayor impacto */
+  font-weight: 400; /* Esta fuente se ve mejor más fina */
+  
+  /* Color rojo base */
+  color: #e60000;
+  
+  /* EFECTO 3D IMPACTANTE: Múltiples capas de sombras rojas */
+  text-shadow: 
+    0 1px 0 #b30000,
+    0 2px 0 #990000,
+    0 3px 0 #800000,
+    0 4px 0 #660000,
+    0 5px 0 #4d0000,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(230, 0, 0, .5),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+    
   cursor: pointer;
   transition: transform 0.3s ease, color 0.3s ease;
-  z-index: 10;
+  
   /* Aplicamos la animación de latido constante */
   animation: heartbeat 1.4s infinite ease-in-out;
+  
+  /* Pequeña rotación inicial para acentuar el 3D */
+  transform: rotateX(10deg);
+  
+  /* Asegurar que el texto sea legible */
+  letter-spacing: 2px;
 }
 
 /* Efecto al pasar el mouse sobre el nombre */
 /*.name-title:hover {
-  /*transform: scale(1.1);
-  color: #f472b6;*/
-  /* Mantenemos el latido y aumentamos la escala base al hacer hover 
+  color: #ff1a1a; /* Rojo más brillante al hacer hover 
+   Mantener el 3D y el latido, pero un poco más grande 
   animation: heartbeatHover 1.4s infinite ease-in-out;
-
 }*/
-/* Animación del latido en estado normal (doble pulso como un corazón) */
+
+/* Animación del latido en estado normal */
 @keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-  14% {
-    transform: scale(1.15);
-  }
-  28% {
-    transform: scale(1);
-  }
-  42% {
-    transform: scale(1.15);
-  }
-  70% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: rotateX(10deg) scale(1); }
+  14% { transform: rotateX(10deg) scale(1.08); }
+  28% { transform: rotateX(10deg) scale(1); }
+  42% { transform: rotateX(10deg) scale(1.08); }
+  70% { transform: rotateX(10deg) scale(1); }
+  100% { transform: rotateX(10deg) scale(1); }
 }
 
 /* Animación del latido cuando pasas el cursor por encima */
 @keyframes heartbeatHover {
-  0% {
-    transform: scale(1.1);
-  }
-  14% {
-    transform: scale(1.25);
-  }
-  28% {
-    transform: scale(1.1);
-  }
-  42% {
-    transform: scale(1.25);
-  }
-  70% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
+  0% { transform: rotateX(10deg) scale(1.05); }
+  14% { transform: rotateX(10deg) scale(1.15); }
+  28% { transform: rotateX(10deg) scale(1.05); }
+  42% { transform: rotateX(10deg) scale(1.15); }
+  70% { transform: rotateX(10deg) scale(1.05); }
+  100% { transform: rotateX(10deg) scale(1.05); }
 }
 
 /* Estilo y animación de los corazones flotantes */
 .heart {
   position: absolute;
-  color: #fffdd0; /* Tono Crema/Marfil */
-  /* Puedes probar otros tonos crema ajustando el color de arriba:
-      #fdf5e6 (OldLace)
-      #f5f5dc (Beige)
-      #faf0e6 (Linen)
-  */
+  /* CAMBIADO A BLANCO para mejor contraste */
+  color: #e80d0d; 
   
-  /* --- ESTA ES LA LÍNEA MODIFICADA --- */
-  font-size: 100px; /* Aumentado de 80px a 100px */
-  /* ---------------------------------- */
-
-  text-shadow: 0 0 10px rgba(255, 253, 208, 0.6);
+  font-size: 100px; /* Mantenemos el tamaño grande */
+  
+  /* Brillo blanco sutil */
+  text-shadow: 0 0 10px rgba(201, 116, 116, 0.8);
+  
   pointer-events: none;
   animation: floatUp 2s linear forwards;
-  z-index: 50px;
+  /* z-index ajustado, los corazones pasan detrás del título */
+  z-index: 5;
 }
+
 /* Animación: El corazón sube, se agranda y se desvanece */
 @keyframes floatUp {
   0% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
   }
   50% {
-    opacity: 0.8;
-    transform: translate(-50%, -100px) scale(1.2);
+    opacity: 0.9;
+    transform: translate(-50%, -100px) scale(1) rotate(15deg);
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -200px) scale(1.5);
+    transform: translate(-50%, -250px) scale(1.4) rotate(-15deg);
   }
 }
